@@ -1,4 +1,4 @@
-package ml2048I;
+package ml2048II;
 
 import java.io.BufferedReader;
 import java.io.BufferedWriter;
@@ -44,12 +44,7 @@ public class gameManager {
 	{
 		
 		
-		int[][] weights1 = new int[][] {{100,80,-80,-100},{80,60,-60,-80},{80,60,-60,-80},{100,80,-80,-100}};
-		int[][] weights2 = new int[][] {{80,100,-100,-80},{100,60,-60,-100},{100,60,-60,-100},{80,100,-100,-80}};
-		int[][] weights3 = new int[][] {{100,80,-80,-100},{-40,-20,20,40},{-40,-20,20,40},{100,80,-80,-100}};
-		int[][] weightsN = new int[][] {{12,40,-24,-28},{40,20,12,-8},{-40,4,12,-24},{-36,40,8,-28}};
-		weightcalculator wc = new weightcalculator(weightsN);
-		weightcalculator2 wc2 = new weightcalculator2();
+		
 		int trialTimes = 100;
 		int[] maxSet = new int[trialTimes];
 		int winCount = 0;
@@ -131,7 +126,12 @@ public class gameManager {
 						
 						
 						//System.out.println("triggered");
+						
 						//here real operate
+						BufferedWriter op = null;
+						op = new BufferedWriter(new FileWriter("dir.txt"));
+						op.write(moves.get(i).operateDir);
+						if(op!= null)op.close();
 						theboard.move(moves.get(i).operateDir, false);
 						break;
 					}else 
@@ -154,23 +154,10 @@ public class gameManager {
 				Collections.sort(moves);
 				*/
 				//ver III
-				if(moveCount < 3000) 
-				{
-					moves = calcweightVerIII(theboard.boardVal, 2);
-				}
-				else 
-				{
-					double[][] fourDirsWeight = wc2.calcWeight(toLog2(theboard.boardVal));
-					leftweight = (int)(fourDirsWeight[0][0] * 100000);
-					rightweight = (int)(fourDirsWeight[0][1] * 100000);
-					upweight = (int)(fourDirsWeight[0][2] * 100000);
-					downweight = (int)(fourDirsWeight[0][3] * 100000);
-					moves = new ArrayList<>();
-					moves.add(new operate("up", upweight));
-					moves.add(new operate("left", leftweight));
-					moves.add(new operate("right", rightweight));
-					moves.add(new operate("down", downweight));
-				}
+				
+				moves = calcweightVerIII(theboard.boardVal, 2);
+				
+			
 				//ver IV
 				
 				
