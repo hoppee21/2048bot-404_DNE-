@@ -2,12 +2,15 @@ package ml2048II;
 
 import java.io.BufferedReader;
 import java.io.BufferedWriter;
+import java.io.FileReader;
 import java.io.FileWriter;
 import java.io.IOException;
 import java.io.InputStreamReader;
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.Scanner;
+
+import ml2048I.board;
 
 class operate implements Comparable<operate>
 {
@@ -144,7 +147,12 @@ public class gameManager {
 				theScore = theboard.score;
 				
 				//fixme: refresh the board if actual individual process
-				
+				boolean needReadFromWeb = false;
+				if(needReadFromWeb) 
+				{
+					
+					theboard = new board(readMatFromFileInt("data"));
+				}
 				//ver II
 				/*
 				for(operate i : moves) 
@@ -245,7 +253,7 @@ public class gameManager {
 				
 				s = s.moveEstimation("left", false);
 				//int zerosWeight = theScore /18;
-				int zerosWeight = s.boardMaxVal() /4;
+				int zerosWeight = s.boardMaxVal() / 3;
 				int FlatnessWeight = -2;
 				int lostWeight = 0;
 				s.generateNum();
@@ -380,6 +388,32 @@ public class gameManager {
 			}
 		}
 		
+		return returner;
+	}
+	public static int[][] readMatFromFileInt(String name) throws IOException
+	{
+		BufferedReader in = null;
+		in = new BufferedReader(new FileReader(name + ".txt"));
+		String line;
+		ArrayList<String> readData = new ArrayList<String>();
+		while ((line = in.readLine()) != null) {
+			readData.add(line);
+		}
+		int rows = readData.size();
+		int[][] returner = new int[rows][];
+		int count = 0;
+		for(String s : readData) 
+		{
+			String[] oneRow = s.split(",");
+			returner[count] = new int[oneRow.length];
+			for(int i = 0; i < oneRow.length; i ++) 
+			{
+				returner[count][i] = Integer.parseInt(oneRow[i]);
+			}
+			count ++;
+			
+		}
+		//int cols = 
 		return returner;
 	}
 }
