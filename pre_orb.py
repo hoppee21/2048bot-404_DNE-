@@ -62,9 +62,28 @@ if __name__ == '__main__':
     descriptors_dict =pre_orb('2048_data')
     #img = cv.imread('2.png')
     #print(matche(descriptors_dict,orb_detect(img)))
-    file_list = getphoto('imgcache')
+    file_list = getphoto('imgCache')
+    output = [0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0]
     for file_name in file_list:
-        print(matche(descriptors_dict,cache_orb_detect(file_name)))
+        #print(file_name[:-4])
+        des = cache_orb_detect(file_name)
+        if des is None:
+            #print('0')
+            output[int(file_name[:-4])] = '0'
 
+        else:
+            #print(matche(descriptors_dict,des))
+            RESULT = matche(descriptors_dict,des)
+            output[int(file_name[:-4])] = RESULT
+            #print(RESULT)
 
-        
+    print(output)
+    f = open('data.txt', mode= 'w')
+    n = 1
+    for e in output:
+        f.write(e+',')
+        if n == 4:
+            f.write('\n')
+            n= 0
+        n=n+1
+    f.close()
