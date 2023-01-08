@@ -1,0 +1,56 @@
+ProjectName: 2048bot
+Team name: 404_DNE
+Team members:	Ruijun Shen (Java programmer)
+		Yihui Wang (python programmer) 
+		Yunyang Lu (Program manager, python programmer)
+HackED 2023
+
+Included Files (Required for Running):
+	2048_data (file with image sample of numbers)
+	KeyCtrl.py
+	ScrShotTaker.py
+	TemplateMatch.py
+	imageSplit.py
+	main.py
+	pre_orb.py
+	manager.jar
+	template2048.png
+
+Included Files (source file)
+	manager.java (source file of manager.jar)
+	
+	gameManager.java
+	board.java
+	simulateBoard.java
+	(above 3 are standalone trainning and testing file for the 
+		movement decision bot. The result combined into manager.java)
+
+
+Introduction:
+		This program is a AI bot for the 2048 game, with usage of 
+	openCV as an image processor for recognizing position and value 
+	of the numbers(based on python), and an AI bot which decide the next
+	movement(based on Java)
+		The program is currently working to some degree, video 
+	demostration is included.  
+
+Usage:
+	Running main.py with python3 or any IDE with python3 environment 
+	, and packages specified in requirement.txt
+	for packages installing, use:
+		pip install -r requirement.txt
+
+	The program will pop out the 2048.org website, and start playing it. 
+	Close the program directly to terminate it.
+	
+WARNING: This program will take screenshots for image processing. 
+	The screenshots will be ONLY stored locally in /Scr folder.
+
+Outcome:
+		This project is working with minor image detection error for 
+	future development. The stand-alone Java Manager.java works well in 
+	solving the cli 2048 game. The python image detection part reveals
+	some detection confusion (espectially in seperating 16 and 64).
+		This project is a good practice for combinning programming in 
+	different language (Java and Python), project managing among multiple 
+	contributors with different programming languages is practiced. 
