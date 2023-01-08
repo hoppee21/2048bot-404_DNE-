@@ -52,7 +52,6 @@ def matche(descriptors_dict, curent_descriptors):
             print(key)
             print(sum)
 
-
         if s_sum > sum:
             s_key = key
             s_sum = sum
