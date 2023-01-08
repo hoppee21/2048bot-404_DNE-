@@ -65,7 +65,7 @@ def matche(descriptors_dict,curent_descriptors):
 
         
 
-if __name__ == '__main__':
+def SecondMain ():
     descriptors_dict =pre_orb('2048_data')
     #img = cv.imread('2.png')
     #print(matche(descriptors_dict,orb_detect(img)))
