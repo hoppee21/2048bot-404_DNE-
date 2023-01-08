@@ -147,7 +147,7 @@ public class gameManager {
 				theScore = theboard.score;
 				
 				//fixme: refresh the board if actual individual process
-				boolean needReadFromWeb = false;
+				boolean needReadFromWeb = true;
 				if(needReadFromWeb) 
 				{
 					
