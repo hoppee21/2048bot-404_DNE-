@@ -148,7 +148,6 @@ public class manager {
 				theScore = theboard.score;
 				
 				//fixme: refresh the board if actual individual process
-				needReadFromWeb = true;
 				if(needReadFromWeb) 
 				{
 					
