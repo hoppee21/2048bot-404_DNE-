@@ -1,0 +1,5 @@
+opencv
+pynput
+pyautogui
+pillow
+
